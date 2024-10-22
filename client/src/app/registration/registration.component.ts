@@ -11,13 +11,13 @@ import { Router } from '@angular/router';
   templateUrl: './registration.component.html',
   styleUrls: ['./registration.component.css']
 })
-export class RegistrationComponent  {
-  username: string |any;
-  password: string |any;
-  role: string |any;
+export class RegistrationComponent {
+  username: string;
+  password: string | any;
+  role: string | any;
   registerForm: FormGroup;
 
-  constructor(private http: HttpClient,private authService: AuthService, private router:Router,private formBuilder: FormBuilder) { }
+  constructor(private http: HttpClient, private authService: AuthService, private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -29,14 +29,15 @@ export class RegistrationComponent  {
 
   register() {
     const user = {
-      username: this.username,
-      password: this.password,
-      role: this.role
+      username: this.registerForm.value.username,
+      password: this.registerForm.value.password,
+      role: this.registerForm.value.role
     };
+    console.log(user);
 
     this.http.post('http://localhost:3000/authRoutes/register', user)
       .subscribe(
-        (response:any) => {
+        (response: any) => {
           console.log(response);
           alert('Registration Successful!');
           this.router.navigate(['/login']);

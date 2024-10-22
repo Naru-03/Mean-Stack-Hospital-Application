@@ -12,10 +12,10 @@ exports.register = async (req, res) => {
     // Check if the role exists
     const foundRole = await Role.findOne({ name: role });
 
-    console.log(`Role ${foundRole}`, req)
-    if (!foundRole) {
-      return res.status(400).json({ error: 'Invalid role' });
-    }
+    console.log(`Role ${foundRole}`, username, password, role)
+    // if (!foundRole) {
+    //   return res.status(400).json({ error: 'Invalid role' });
+    // }
 
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -24,7 +24,7 @@ exports.register = async (req, res) => {
     const newUser = new User({
       username,
       password: hashedPassword,
-      role: foundRole._id,
+      role,
     });
 
     // Save the user

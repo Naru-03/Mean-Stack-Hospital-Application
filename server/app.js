@@ -1,6 +1,6 @@
 const express = require('express');
 //const bcrypt = require('bcrypt');
-
+var bodyParser = require('body-parser');
 const cors = require('cors');
 const db = require('./db');
 const patientRoutes = require('./routes/patientRoutes');
@@ -18,7 +18,9 @@ app.use(cors());
 
 // Middleware for parsing JSON request bodies
 app.use(express.json());
-
+app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 // Routes
 app.use('/patients', patientRoutes);
 app.use('/doctors', doctorRoutes);
