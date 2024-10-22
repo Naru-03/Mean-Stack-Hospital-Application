@@ -1,4 +1,4 @@
-Project Title: Hospital Manager MEAN Stack System
+Hospital Manager MEAN Stack System
 * Developed a Comprehensive Hospital Management System using the MEAN stack (MongoDB, Express.js, Angular, Node.js) to streamline hospital operations and enhance patient care.
 
 * Implemented CRUD Operations for managing doctor and patient records, ensuring efficient data handling and retrieval.
